@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - DAD
+  - goal
+  - slide
+  - ground
   layers:
   - Default
   - TransparentFX
