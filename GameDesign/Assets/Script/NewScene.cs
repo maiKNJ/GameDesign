@@ -14,7 +14,10 @@ public class NewScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().name == "Cutscene3" && Input.GetKeyDown(KeyCode.Tab))
+        {
+            SceneManager.LoadScene("Level4", LoadSceneMode.Single);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,6 +27,11 @@ public class NewScene : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Level2")
             {
                 SceneManager.LoadScene("Cutscene3", LoadSceneMode.Single);
+            }
+
+            if (SceneManager.GetActiveScene().name == "Level4")
+            {
+                SceneManager.LoadScene("End", LoadSceneMode.Single);
             }
         }
         

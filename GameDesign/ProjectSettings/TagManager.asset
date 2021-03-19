@@ -8,6 +8,8 @@ TagManager:
   - goal
   - slide
   - ground
+  - Stuff
+  - throw
   layers:
   - Default
   - TransparentFX
