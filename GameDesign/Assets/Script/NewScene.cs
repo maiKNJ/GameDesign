@@ -18,6 +18,11 @@ public class NewScene : MonoBehaviour
         {
             SceneManager.LoadScene("Level4", LoadSceneMode.Single);
         }
+
+        if(SceneManager.GetActiveScene().name == "Intro" && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Start", LoadSceneMode.Single);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

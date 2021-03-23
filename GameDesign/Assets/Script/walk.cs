@@ -33,7 +33,7 @@ public class walk : MonoBehaviour
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && jump == true)
+        if (Input.GetKey(KeyCode.W) && jump == true || Input.GetKey(KeyCode.UpArrow) && jump == true)
         {
             //if (jump == true)
             //{
