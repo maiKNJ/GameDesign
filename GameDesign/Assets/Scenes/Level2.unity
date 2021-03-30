@@ -1250,7 +1250,7 @@ GameObject:
   - component: {fileID: 855395013}
   - component: {fileID: 855395012}
   m_Layer: 0
-  m_Name: Window3 (2)
+  m_Name: web1
   m_TagString: DAD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2088,7 +2088,7 @@ GameObject:
   - component: {fileID: 1245928939}
   - component: {fileID: 1245928938}
   m_Layer: 0
-  m_Name: Window3 (3)
+  m_Name: web3
   m_TagString: DAD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2601,7 +2601,7 @@ GameObject:
   - component: {fileID: 1594641272}
   - component: {fileID: 1594641271}
   m_Layer: 0
-  m_Name: Window3 (1)
+  m_Name: web2
   m_TagString: DAD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
