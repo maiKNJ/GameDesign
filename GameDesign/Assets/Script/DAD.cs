@@ -40,7 +40,7 @@ public class DAD : MonoBehaviour
             time += Time.deltaTime;
             
         }
-        Debug.Log("freeze" + freeze);
+       // Debug.Log("freeze" + freeze);
 
         if (freeze == true)
         {

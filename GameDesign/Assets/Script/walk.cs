@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class walk : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
+    public Animator animator;
     public float jumpSpeed = 6f;
     public float speed = 2f;
     bool slide;
     bool jump = true;
+    bool forward = false;
+    bool jump2 = false;
     //public Collider2D obstacle;
     
     // Start is called before the first frame update
@@ -21,57 +25,106 @@ public class walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        //level 2
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                forward = true;
+                transform.position += Vector3.right * speed * Time.deltaTime;
+                animator.SetBool("speed", forward);
+            }
+            else
+            {
+                forward = false;
+                animator.SetBool("speed", forward);
+
+            }
+
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                forward = false;
+                slide = true;
+                animator.SetBool("speed", forward);
+                animator.SetBool("slide", slide);
+            }
+            else
+            {
+                slide = false;
+                animator.SetBool("slide", slide);
+            }
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                forward = false;
+                jump2 = true;
+                animator.SetBool("speed", forward);
+                animator.SetBool("jump", jump2);
+
+            }
+            else
+            {
+                jump2 = false;
+                animator.SetBool("jump", jump2);
+            }
+        }
+
+        //level 4
+        if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                forward = true;
+                transform.position += Vector3.left * speed * Time.deltaTime;
+                animator.SetBool("speed", forward);
+            }
+            else
+            {
+                forward = false;
+                animator.SetBool("speed", forward);
+
+            }
+
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                forward = false;
+                slide = true;
+                animator.SetBool("speed", forward);
+                animator.SetBool("slide", slide);
+            }
+            else
+            {
+                slide = false;
+                animator.SetBool("slide", slide);
+            }
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                forward = false;
+                jump2 = true;
+                animator.SetBool("speed", forward);
+                animator.SetBool("jump", jump2);
+
+            }
+            else
+            {
+                jump2 = false;
+                animator.SetBool("jump", jump2);
+            }
+        }
+        //jump all levels
+
+        if (Input.GetKey(KeyCode.W) && jump == true)
+        {
+            rigidBody.velocity = Vector2.up * jumpSpeed;
+            jump = false;
+
+        }
       
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.W) && jump == true || Input.GetKey(KeyCode.UpArrow) && jump == true)
-        {
-            //if (jump == true)
-            //{
-                rigidBody.velocity = Vector2.up * jumpSpeed;
-                //rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-                jump = false;
-            //body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            //}
-
-        }
         if (rigidBody.velocity.y == 0)
         {
             jump = true;
         }
-       /* if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) )
-        {
-            //if (obstacle.tag == "slide")
-            //{
-                slide = true;
-                obstacle.enabled = false;
-                Debug.Log("Collider.enabled = " + obstacle.enabled);
-            //}
-            //gameObject.transform.Rotate(0, 0, 45, Space.Self);
-            
-
-        }
-        else if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            //gameObject.transform.Rotate(0, 0, -50, Space.Self);
-            slide = false;
-            obstacle.enabled = true;
-        }*/
     }
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "ground")
-        {
-            jump = true;
-        }
-    }*/
 }
