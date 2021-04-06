@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0447716ac202922488cb0e974ec35c67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3330bc16edd3247b376100ce40d664, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -460,7 +460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ESC - end game
+  m_Text: 
 --- !u!222 &769314840
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class Start_Start : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Start")
             {
-                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                SceneManager.LoadScene("Intro", LoadSceneMode.Single);
             }
         }
     }

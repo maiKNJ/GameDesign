@@ -23,7 +23,7 @@ public class SlowDown : MonoBehaviour
         if (collision.gameObject.tag == "Stuff")
         {
             Debug.Log("Destroy");
-            Object.Destroy(this);
+            //Object.Destroy(this);
             gameObject.SetActive(false); 
         }
     }

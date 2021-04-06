@@ -18,11 +18,13 @@ public class DAD : MonoBehaviour
     bool freeze = false;
     float seconds;
     public Animator animator;
+    //AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
         minSpeed = currentSpeed;
         time = 0;
+        //audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,8 @@ public class DAD : MonoBehaviour
             currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, time / accelerationTime);
             transform.position += Vector3.right * currentSpeed * Time.deltaTime;
             time += Time.deltaTime;
+            animation = false;
+            animator.SetBool("idle", animation);
         }
         else if (SceneManager.GetActiveScene().name == "Level4" && freeze == false)
         {
@@ -40,7 +44,12 @@ public class DAD : MonoBehaviour
             animator.SetBool("idle", animation);
             currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, time / accelerationTime);
             transform.position += Vector3.left * (currentSpeed + 0.25f) * Time.deltaTime;
-            time += Time.deltaTime; 
+            
+            time += Time.deltaTime;
+            /*if (audio != null)
+            {
+                audio.Play();
+            }*/
             
             
             
@@ -71,6 +80,11 @@ public class DAD : MonoBehaviour
         Debug.Log("time start: " + Time.time);
         yield return new WaitForSeconds(time);
         Debug.Log("time end: " + Time.time);
+        /*if (audio != null)
+        {
+            audio.Pause();
+        }*/
+        
         freeze = false;
         
     }
@@ -84,6 +98,13 @@ public class DAD : MonoBehaviour
                 SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             }
         }
+
+        if (collision.gameObject.tag == "throw")
+        {
+            freeze = true;
+            Debug.Log("Freeze now");
+        }
+
         if (collision.gameObject.tag == "DAD" || collision.gameObject.tag == "slide")
         {
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -95,10 +116,6 @@ public class DAD : MonoBehaviour
             collision.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         }
 
-        if (collision.gameObject.tag == "throw")
-        {
-            freeze = true;
-            Debug.Log("Freeze now");
-        }
+       
     }
 }
