@@ -14,9 +14,10 @@ public class DAD : MonoBehaviour
     float maxSpeed = 4f;
     private float time;
     public float accelerationTime = 60f;
-
+    bool animation = false;
     bool freeze = false;
     float seconds;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +36,13 @@ public class DAD : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level4" && freeze == false)
         {
+            animation = false;
+            animator.SetBool("idle", animation);
             currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, time / accelerationTime);
             transform.position += Vector3.left * (currentSpeed + 0.25f) * Time.deltaTime;
-            time += Time.deltaTime;
+            time += Time.deltaTime; 
+            
+            
             
         }
        // Debug.Log("freeze" + freeze);
@@ -61,10 +66,13 @@ public class DAD : MonoBehaviour
 
     IEnumerator enumerator(float time)
     {
+        animation = true;
+        animator.SetBool("idle", animation);
         Debug.Log("time start: " + Time.time);
         yield return new WaitForSeconds(time);
         Debug.Log("time end: " + Time.time);
         freeze = false;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,10 +87,12 @@ public class DAD : MonoBehaviour
         if (collision.gameObject.tag == "DAD" || collision.gameObject.tag == "slide")
         {
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         }
         else
         {
             collision.gameObject.GetComponent<Collider2D>().enabled = true;
+            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         }
 
         if (collision.gameObject.tag == "throw")
