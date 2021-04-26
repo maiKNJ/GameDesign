@@ -8,6 +8,7 @@ public class Throw : MonoBehaviour
     public GameObject stuff;
     public Rigidbody2D stuffR;
     float speed = -200f;
+    int numR = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && numR <= 3)
         {
             /*Instantiate(stuff, transform.position, transform.rotation);
             stuffR = stuff.transform.GetComponent<Rigidbody2D>();
@@ -28,6 +29,7 @@ public class Throw : MonoBehaviour
             var projectile = Instantiate(stuff, position , this.transform.rotation);
             stuffR = projectile.GetComponent<Rigidbody2D>();
             stuffR.AddForce((float)speed * this.transform.right);
+            numR++;
 
         }
     }
